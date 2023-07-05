@@ -11,8 +11,8 @@
 # Uncomment and change 'MINAPI' and 'MAXAPI' to the minimum and maximum android version for your mod
 # Uncomment DYNLIB if you want libs installed to vendor for oreo+ and system for anything older
 # Uncomment DEBUG if you want full debug logs (saved to /sdcard)
-#MINAPI=21
-#MAXAPI=25
+MINAPI=21
+MAXAPI=40
 #DYNLIB=true
 #DEBUG=true
 
@@ -24,13 +24,6 @@
 # Check the documentations for more info why you would need this
 
 # Construct your list in the following format
-# This is an example
-REPLACE_EXAMPLE="
-/system/app/Youtube
-/system/priv-app/SystemUI
-/system/priv-app/Settings
-/system/framework
-"
 
 # Construct your own list here
 REPLACE="
