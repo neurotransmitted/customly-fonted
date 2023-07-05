@@ -1,7 +1,7 @@
-id=MMT-Ex
-name=Magisk Module Template Extended
-version=v2.1
+id=customlyfonted
+name=Customly Fonted
+version=betav1.0
 versionCode=11
-author=Zackptg5
-description=Magisk Module Template Extended
-updateJson=https://raw.githubusercontent.com/Zackptg5/MMT-Extended/master/update.json
+author=neurotransmitted
+description=Yup, that's it...
+updateJson=https://raw.githubusercontent.com/neurotransmitted/customly-fonted/master/update.json
