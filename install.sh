@@ -3,6 +3,7 @@
 FONT_DIR="/storage/emulated/0/customly-fonted/"
 CONFIG_FILE="/data/custom_font_config.txt"
 DEFAULT_FONT_FILE="/system/fonts/Roboto-Regular.ttf"
+SYSTEM_FONT_FILE="/system/fonts/CustomFont.ttf"
 
 # Read the current font selection from the config file
 if [ -f "$CONFIG_FILE" ]; then
@@ -30,14 +31,14 @@ update_config_file() {
     echo "Font updated: ${FONT_FILES[$CURRENT_INDEX]}"
 }
 
+# Set the current font
+mount -o remount,rw /system
+cp "$CURRENT_FONT" "$SYSTEM_FONT_FILE"
+chmod 644 "$SYSTEM_FONT_FILE"
+mount -o remount,ro /system
+
 # Main loop for font selection
 while true; do
-    # Set the current font
-    mount -o remount,rw /system
-    cp "${FONT_FILES[$CURRENT_INDEX]}" "/system/fonts/custom_font.ttf"
-    chmod 644 "/system/fonts/custom_font.ttf"
-    mount -o remount,ro /system
-
     # Wait for volume key press
     while true; do
         KEY_STATE=$(getevent -lc 1 /dev/input/event*)
@@ -51,4 +52,10 @@ while true; do
             break
         fi
     done
+
+    # Set the current font
+    mount -o remount,rw /system
+    cp "${FONT_FILES[$CURRENT_INDEX]}" "$SYSTEM_FONT_FILE"
+    chmod 644 "$SYSTEM_FONT_FILE"
+    mount -o remount,ro /system
 done
